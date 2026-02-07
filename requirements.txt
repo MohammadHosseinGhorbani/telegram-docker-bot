@@ -1,0 +1,6 @@
+python-telegram-bot==22.6
+docker==7.1.0
+PyYAML==6.0.3
+humanfriendly==10.0
+python-i18n==0.3.9
+Jinja2==3.1.6

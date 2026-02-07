@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  telegram-docker-bot:
+    image: msghorbani27/telegram-docker-bot:latest
+    container_name: telegram-docker-bot
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config.yml:/config.yml

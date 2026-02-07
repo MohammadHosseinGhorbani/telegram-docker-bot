@@ -1,0 +1,88 @@
+# bot/general.py
+
+start_response: |
+  Welcome to the Docker monitoring and management bot.
+  These are the available commands:
+  - /start
+  - /menu
+  - /containers
+  - /images
+  - /volumes
+  
+  <a href='https://github.com/MohammadHosseinGhorbani/telegram-docker-bot'>[Source Code]</a>
+
+menu_response: "Available Commands:"
+menu_button_containers: "Containers"
+menu_button_images: "Images"
+menu_button_volumes: "Volumes"
+
+# bot/containers.py
+
+container_logs: |
+  <b>Logs:</b>
+  <blockquote expandable>{{ logs }}</blockquote>
+container_logs_button_answer: "Latest Logs of {{ container }}"
+container_action_done: "Container {{ name }}({{ _id }}) has been {{ action }}"
+
+# utils/templates.py
+
+containers_list_item: "{{ status }} <b>{{ name }}</b> - {{ command }}" # status is optional
+containers_list: |
+  List of your Docker containers:
+  
+  {{ container_list }}
+
+running_container: |
+  <b>Name:</b> <code>{{ name }}</code>
+  <b>ID:</b> <code>{{ _id }}</code>
+  <b>Status:</b> <code>{{ status }}</code>
+  <b>Ports:</b>
+  <blockquote><code>{{ ports }}</code></blockquote>
+  <b>Stats:</b>
+  <blockquote>CPU %: <code>{{ cpu_percent }}%</code>
+  MEM USAGE / LIMIT: <code>{{ mem_usage }}</code> / <code>{{ mem_limit }}</code>
+  MEM %: <code>{{ mem_percent }}%</code>
+  NET I/O:
+  BLOCK I/O:
+  PIDs: <code>{{ pids }}</code></blockquote>
+stopped_container: |
+  <b>Name:</b> <code>{{ name }}</code>
+  <b>ID:</b> <code>{{ _id }}</code>
+  <b>Status:</b> <code>{{ status }}</code>
+  <b>Ports:</b>
+  <blockquote><code>{{ ports }}</code></blockquote>
+
+container_keyboard_start: "Start"
+container_keyboard_restart: "Restart"
+container_keyboard_pause: "Pause"
+container_keyboard_unpause: "Unpause"
+container_keyboard_stop: "Stop"
+container_keyboard_logs: "Logs"
+container_keyboard_back: "Back"
+
+images_list_item: "{{ index }} <b>{{ name }}</b> - {{ command }}" # index is optional
+images_list: |
+  List of your Docker images:
+  
+  {{ image_list }}
+
+image: |
+  <b>Names:</b> <code>{{ names }}</code>
+  <b>ID:</b> <code>{{ _id }}</code>
+  <b>History:</b>
+  <blockquote expandable><code>{{ history }}</code></blockquote>
+
+volumes_list_item: "{{ index }} <b>{{ name }}</b> - {{ command }}" # index is optional
+volumes_list: |
+  List of your Docker volumes:
+  
+  {{ volumes_list }}
+
+volume: |
+  <b>Name:</b> <code>{{ name }}</code>
+  <b>ID:</b> <code>{{ _id }}</code>
+  <b>Driver:</b> <code>{{ driver }}</code>
+  <b>Created At:</b> <code>{{ year }}/{{ month }}/{{ day }} - {{ hour }}:{{ minute }}:{{ second }}</code>
+  <b>Point</b>: <code>{{ mount_point }}</code>
+  
+  <i>Date Format: YYYY/MM/DD</i>
