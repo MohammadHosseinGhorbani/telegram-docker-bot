@@ -1,4 +1,8 @@
 # Telegram Docker Bot
+![Docker Pulls](https://img.shields.io/docker/pulls/msghorbani27/telegram-docker-bot)
+![Docker Image Size](https://img.shields.io/docker/image-size/msghorbani27/telegram-docker-bot/latest)
+![License](https://img.shields.io/github/license/MohammadHosseinGhorbani/docker-tg)
+
 telegram-docker-bot is a minimal Telegram bot for Docker moderation, The bot interacts with Telegram via a bot token and can help automate or moderate Docker-related activities using configurable text responses.
 
 ## Features
