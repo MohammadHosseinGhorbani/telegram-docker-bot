@@ -120,7 +120,7 @@ def make_image_text(image: Image):
     return jinja.from_string(i18n.t('image')).render(
         names=', '.join(image.tags),
         _id=image.short_id,
-        history=html.escape(('\n'.join([i['CreatedBy'] for i in image.history()]))[-CONFIG['history-character-limit']:])
+        history=html.escape(('\n'.join([i['CreatedBy'] for i in image.history()]))[-CONFIG['history_character_limit']:])
     )
 
 
