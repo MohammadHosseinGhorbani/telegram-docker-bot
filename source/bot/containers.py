@@ -36,7 +36,7 @@ async def container_buttons(update: Update, context: Context.DEFAULT_TYPE):
     elif command == 'logs':
         container = dclient.containers.get(container_id)
         response = container.logs().decode()[-CONFIG['logs_character_limit']:]
-        await query.message.chat.send_message(jinja.from_string(i18n.t('container_logs')).render(html.escape(response)), parse_mode='html')
+        await query.message.chat.send_message(jinja.from_string(i18n.t('container_logs')).render(logs=html.escape(response)), parse_mode='html')
         await query.answer(jinja.from_string(i18n.t('container_logs_button_answer')).render(container=container.name))
     else:
         container = dclient.containers.get(container_id)

@@ -1,12 +1,13 @@
 import humanfriendly
 import i18n
+import html
 from telegram import InlineKeyboardButton
 from datetime import datetime
 from docker.models.containers import Container
 from docker.models.images import Image
 from docker.models.volumes import Volume
 
-from config import dclient, jinja
+from config import CONFIG, dclient, jinja
 
 
 status_emojis = {
@@ -119,7 +120,7 @@ def make_image_text(image: Image):
     return jinja.from_string(i18n.t('image')).render(
         names=', '.join(image.tags),
         _id=image.short_id,
-        history='\n'.join([i['CreatedBy'] for i in image.history()])
+        history=html.escape(('\n'.join([i['CreatedBy'] for i in image.history()]))[-CONFIG['history-character-limit']:])
     )
 
 
