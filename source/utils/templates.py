@@ -77,19 +77,19 @@ def make_container_text(container: Container):
 def make_container_keyboard(container: Container):
     return ([
                 [
-                    InlineKeyboardButton(jinja.from_string(i18n.t('container_keyboard_start')).render(), callback_data=f'c_{container.short_id}_start'),
+                    InlineKeyboardButton(jinja.from_string(i18n.t('container_keyboard_start')).render(), callback_data=f'c_{container.short_id}_start', api_kwargs={'style': 'success'}),
                 ]
             ] if container.status == 'exited' else [
         [
-            InlineKeyboardButton(i18n.t('container_keyboard_restart'), callback_data=f'c_{container.short_id}_restart'),
-            InlineKeyboardButton(i18n.t('container_keyboard_pause'), callback_data=f'c_{container.short_id}_pause'),
-            InlineKeyboardButton(i18n.t('container_keyboard_stop'), callback_data=f'c_{container.short_id}_stop')
+            InlineKeyboardButton(i18n.t('container_keyboard_restart'), callback_data=f'c_{container.short_id}_restart', api_kwargs={'style': 'primary'}),
+            InlineKeyboardButton(i18n.t('container_keyboard_pause'), callback_data=f'c_{container.short_id}_pause', api_kwargs={'style': 'danger'}),
+            InlineKeyboardButton(i18n.t('container_keyboard_stop'), callback_data=f'c_{container.short_id}_stop', api_kwargs={'style': 'danger'})
         ]
     ] if container.status != 'paused' else [
         [
-            InlineKeyboardButton(i18n.t('container_keyboard_restart'), callback_data=f'c_{container.short_id}_restart'),
-            InlineKeyboardButton(i18n.t('container_keyboard_unpause'), callback_data=f'c_{container.short_id}_unpause'),
-            InlineKeyboardButton(i18n.t('container_keyboard_stop'), callback_data=f'c_{container.short_id}_stop')
+            InlineKeyboardButton(i18n.t('container_keyboard_restart'), callback_data=f'c_{container.short_id}_restart', api_kwargs={'style': 'primary'}),
+            InlineKeyboardButton(i18n.t('container_keyboard_unpause'), callback_data=f'c_{container.short_id}_unpause', api_kwargs={'style': 'success'}),
+            InlineKeyboardButton(i18n.t('container_keyboard_stop'), callback_data=f'c_{container.short_id}_stop', api_kwargs={'style': 'danger'})
         ]
     ]) + [
         [
